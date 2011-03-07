@@ -1,0 +1,19 @@
+Welcome to DEATH !
+DEATH is a variant to Conways game of LIFE.
+Every LIFE game can be described by two sets of numbers:
+What I added is mulitiplayer support:
+* numbers of friendly neighbors for a friendly item to survive
+* numbers of friendly neighbors for a friendly item to be born
+* numbers of friendly neighbors for a foe item to be killed
+the players take turns.
+
+CONTROLS:
+arrow-keys - move cursor
+return     - toggle field value
+               after that it is the next players' turn
+backspace  - clear field value
+space      - perform a full step (one for every player)
+tab        - perform a single step (only for the active player)
+               after that it is the next players' turn
+h          - display this help screen
+escape     - quit
