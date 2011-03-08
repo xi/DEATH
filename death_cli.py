@@ -17,14 +17,14 @@ the players take turns.
 
 CONTROLS:
 arrow-keys - move cursor
-return     - toggle field value
+space      - toggle field value
                after that it is the next players' turn
 backspace  - clear field value
-space      - perform a full step (one for every player)
+return     - perform a full step (one for every player)
 tab        - perform a single step (only for the active player)
                after that it is the next players' turn
 h          - display this help screen
-escape     - quit
+escape     - return to menu
 
 return with any key
 """
@@ -86,12 +86,12 @@ class Crs:
     elif key == curses.KEY_LEFT:
       if self.col > 0:
         self.col -= 1
-    elif key == ord('\n'):
+    elif key == ord(' '):
       self.death.map.setitem(self.row, self.col, self.death.id+1)
       self.death.next()
     elif key == curses.KEY_BACKSPACE:
       self.death.map.setitem(self.row, self.col, 0)
-    elif key == ord(' '):
+    elif key == ord('\n'):
       self.death.step()
     elif key == ord('	'):
       self.death.step_one(self.death.id)

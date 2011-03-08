@@ -52,7 +52,7 @@ class Matrix:
     pass # TODO
 
 class Map(Matrix):
-  def __init__(self, rows=5, cols=5, diagonal=True, value=0):
+  def __init__(self, rows=15, cols=15, diagonal=True, value=0):
     Matrix.__init__(self,rows, cols, value)
     self.diagonal = diagonal
 
