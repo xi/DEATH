@@ -39,17 +39,22 @@ class Matrix:
 
   def count(self, _item):
     c = 0
-    for row in rows:
+    for row in self.data:
       for item in row:
         if item == _item:
           c += 1
     return c
 
   def save(filename, seperator=';'):
+    f = open(filename, 'w')
+    f.write('bla')
     pass # TODO
+    f.close()
 
   def load(filename, seperator=';'):
+    f = open(filename, 'r')
     pass # TODO
+    f.close()
 
 class Map(Matrix):
   def __init__(self, rows=15, cols=15, diagonal=True, value=0):

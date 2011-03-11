@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import curses
-import death_cli
+from DeathCli import DeathCli
 from death import Death
 from matrix import Map
 
@@ -169,7 +169,7 @@ class Crs:
 
     _map = Map(rows, cols)
     d = Death(_map, n, alive, born, kill)
-    death_cli.Crs(d, self.screen)
+    DeathCli(d, self.screen)
     return True
 
 if __name__ == '__main__':

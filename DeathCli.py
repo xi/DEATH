@@ -29,7 +29,7 @@ escape     - return to menu
 return with any key
 """
 
-class Crs:
+class DeathCli:
   global help
 
   def __init__(self, death=Death(), screen=curses.initscr()):
@@ -59,6 +59,8 @@ class Crs:
       self.screen.addstr(y0+y, x0-1, '|', curses.color_pair(2))
       self.screen.addstr(y0+y, x0+w, '|', curses.color_pair(2))
     self.screen.addstr(y0+h, x0+w, str(self.death.id+1), curses.color_pair(2))
+    # count
+    self.screen.addstr(y0-1, x0+2, '|'.join([str(a) for a in self.death.count()]), curses.color_pair(2))
     # map
     for i in range(self.death.map.rows):
       for j in range(self.death.map.cols):
@@ -110,7 +112,8 @@ class Crs:
 
          
 if __name__ == '__main__':
-  try: Crs()
-  except: pass
+  try: DeathCli()
+  except Exception as ex:
+   print ex
   curses.endwin()
 

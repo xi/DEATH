@@ -58,3 +58,9 @@ class Death:
     if self.id == self.n:
       self.id = 0
 
+  def count(self):
+    c = []
+    for id in range(self.n):
+      c.append(self.map.count(id+1))
+    return c
+
