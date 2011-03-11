@@ -19,7 +19,7 @@ this happens in turns
 from matrix import Map
 
 class Death:
-  def __init__(self, _map=Map(), n=1, alive=[[2,3]], born=[[3]], kill=[[]], win=(lambda _map,n: None)):
+  def __init__(self, _map=Map(), n=1, alive=[[2,3]], born=[[3]], kill=[[]], win=lambda _map,n: None):
   # the defaults make death the standart life 
     self.n = n
     self.alive = alive
@@ -27,7 +27,7 @@ class Death:
     self.kill = kill
     self.map = _map
     self.id = 0
-    self.win = win
+    self._win = win
 
   def step_one(self,id):
     def f(x): 
@@ -64,3 +64,5 @@ class Death:
       c.append(self.map.count(id+1))
     return c
 
+  def win(self):
+    return self._win(self.map, self.n)

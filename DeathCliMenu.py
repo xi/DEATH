@@ -169,7 +169,7 @@ class Crs:
 
     _map = Map(rows, cols)
     d = Death(_map, n, alive, born, kill)
-    DeathCli(d, self.screen)
+    DeathCli(d, 'default', self.screen)
     return True
 
 if __name__ == '__main__':

@@ -4,6 +4,7 @@
 import curses
 import optparse
 from death import Death
+import death_extra
 
 help = """
 Welcome to DEATH !
@@ -32,9 +33,10 @@ return with any key
 class DeathCli:
   global help
 
-  def __init__(self, death=Death(), screen=curses.initscr()):
+  def __init__(self, death=death_extra.test(15,15,2), title='', screen=curses.initscr()):
     self.screen = screen
     self.death = death
+    self.title = title
     self.screen.clear()
     curses.curs_set(0)
     self.screen.keypad(1)
@@ -44,7 +46,12 @@ class DeathCli:
     self.row = 0
     self.col = 0
     self.draw()
-    while self.mainloop(): pass
+    while self.mainloop():
+      winner = self.death.win()
+      if winner:
+        print 'Player %s wins!' % (winner+1)
+        self.screen.getch()
+        break
 
   def draw(self):
     w = 2*self.death.map.cols-1
@@ -61,6 +68,8 @@ class DeathCli:
     self.screen.addstr(y0+h, x0+w, str(self.death.id+1), curses.color_pair(2))
     # count
     self.screen.addstr(y0-1, x0+2, '|'.join([str(a) for a in self.death.count()]), curses.color_pair(2))
+    # title
+    self.screen.addstr(y0-1, x0+w-len(self.title), self.title, curses.color_pair(2))
     # map
     for i in range(self.death.map.rows):
       for j in range(self.death.map.cols):
@@ -114,6 +123,6 @@ class DeathCli:
 if __name__ == '__main__':
   try: DeathCli()
   except Exception as ex:
-   print ex
+    print ex
   curses.endwin()
 

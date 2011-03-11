@@ -1,4 +1,20 @@
+klassisch
+23|3
+
 statische grenzen -> wer bekommt mehr gebiet?
 zb
 012345678|34|345678
 01234567|34|345678
+
+capture the flag -> wer bekommt zuerst alle 4 ecken
+Ecken müssen tötbar sein also entweder 3 not in alive oder kill <= 3
+Ecken müssen besiedelbar sein, also born <= 3
+
+economy -> wer bekommt zuerst n felder
+
+
+death math -> auslöschen der Gegner
+Ecken müssen tötbar sein also entweder 3 not in alive oder kill <= 3
+Ecken müssen besiedelbar sein, also born <= 3
+
+
