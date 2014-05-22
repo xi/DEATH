@@ -18,51 +18,53 @@ this happens in turns
 
 from matrix import Map
 
+
 class Death:
-  def __init__(self, _map=Map(), n=1, alive=[[2,3]], born=[[3]], kill=[[]], win=lambda _map,n: None):
-  # the defaults make death the standart life 
-    self.n = n
-    self.alive = alive
-    self.born = born
-    self.kill = kill
-    self.map = _map
-    self.id = 0
-    self._win = win
+	def __init__(self, _map=Map(), n=1, alive=[[2, 3]], born=[[3]], kill=[[]],
+			win=lambda _map, n: None):
+	# the defaults make death the standart life
+		self.n = n
+		self.alive = alive
+		self.born = born
+		self.kill = kill
+		self.map = _map
+		self.id = 0
+		self._win = win
 
-  def step_one(self,id):
-    def f(x): 
-      if x[0] == 0:
-        if x[1] in self.born[id]:
-          return id+1
-        else:
-          return x[0]
-      elif x[0] == id+1: 
-        if x[1] in self.alive[id]:
-          return x[0]
-        else:
-          return 0
-      else:
-        if x[1] in self.kill[id]:
-          return 0
-        else:
-          return x[0]
-    self.map.join([self.map, self.map.neighbors([id+1])])
-    self.map.apply_f(f)
+	def step_one(self, id):
+		def f(x):
+			if x[0] == 0:
+				if x[1] in self.born[id]:
+					return id + 1
+				else:
+					return x[0]
+			elif x[0] == id + 1:
+				if x[1] in self.alive[id]:
+					return x[0]
+				else:
+					return 0
+			else:
+				if x[1] in self.kill[id]:
+					return 0
+				else:
+					return x[0]
+		self.map.join([self.map, self.map.neighbors([id + 1])])
+		self.map.apply_f(f)
 
-  def step(self):
-    for id in range(self.n):
-      self.step_one(id)
+	def step(self):
+		for id in range(self.n):
+			self.step_one(id)
 
-  def next(self):
-    self.id += 1
-    if self.id == self.n:
-      self.id = 0
+	def next(self):
+		self.id += 1
+		if self.id == self.n:
+			self.id = 0
 
-  def count(self):
-    c = []
-    for id in range(self.n):
-      c.append(self.map.count(id+1))
-    return c
+	def count(self):
+		c = []
+		for id in range(self.n):
+			c.append(self.map.count(id + 1))
+		return c
 
-  def win(self):
-    return self._win(self.map, self.n)
+	def win(self):
+		return self._win(self.map, self.n)
