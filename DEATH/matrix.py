@@ -66,26 +66,33 @@ class Map(Matrix):
 	def clear(self, i, j):
 		self.setitem(i, j, -1)
 
+	def field_neighbors(self, i, j, players):
+		coods = [
+			(i + 1, j),
+			(i, j + 1),
+			(i - 1, j),
+			(i, j - 1),
+		]
+		if self.diagonal:
+			coods += [
+				(i + 1, j + 1),
+				(i + 1, j - 1),
+				(i - 1, j + 1),
+				(i - 1, j - 1),
+			]
+
+		a = 0
+		for _row, _col in coods:
+			if _row in range(self.rows) and _col in range(self.cols):
+				if self.getitem(_row, _col) in players:
+					a += 1
+		return a
+
 	def neighbors(self, players):
-		result = Map(self.rows, self.cols, self.diagonal)
+		result = Matrix(self.rows, self.cols)
 		for i in range(self.rows):
 			for j in range(self.cols):
-				a = 0
-				for cood in [(i + 1, j), (i, j + 1), (i - 1, j), (i, j - 1)]:
-					try:
-						if self.getitem(cood[0], cood[1]) in players:
-							a += 1
-					except:
-						pass
-				if self.diagonal:
-					for cood in [(i + 1, j + 1), (i + 1, j - 1), (i - 1, j + 1),
-							(i - 1, j - 1)]:
-						try:
-							if self.getitem(cood[0], cood[1]) in players:
-								a += 1
-						except:
-							pass
-				result.setitem(i, j, a)
+				result.setitem(i, j, self.field_neighbors(i, j,  players))
 		return result
 
 	def clone(self):
