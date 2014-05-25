@@ -46,7 +46,7 @@ def example_game(rows=15, cols=15, n=2):
 	return death
 
 
-class DeathCli(object):
+class DeathUI(object):
 	def __init__(self, death=example_game(15, 15, 2), title='',
 			screen=curses.initscr()):
 		self.screen = screen
@@ -142,7 +142,7 @@ class DeathCli(object):
 
 if __name__ == '__main__':
 	try:
-		DeathCli()
+		DeathUI()
 	except Exception as ex:
 		print(ex)
 	curses.endwin()

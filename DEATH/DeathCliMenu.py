@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import curses
-from DeathCli import DeathCli
+from death_ui import DeathUI
 from death import Death
 from matrix import Map
 
@@ -175,7 +175,7 @@ class Crs(object):
 
 		_map = Map(rows, cols)
 		d = Death(_map, n, alive, born, kill)
-		DeathCli(d, 'default', self.screen)
+		DeathUI(d, 'default', self.screen)
 		return True
 
 
