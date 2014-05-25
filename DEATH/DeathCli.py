@@ -2,7 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import curses
-import death_extra
+
+from matrix import Map
+from death import Death
+import win
+import abk
 
 help = """
 Welcome to DEATH !
@@ -29,10 +33,23 @@ return with any key
 """
 
 
+def example_game(rows=15, cols=15, n=2):
+	map = Map(rows, cols)
+	alive = []
+	born = []
+	kill = []
+	for player in range(n):
+		alive.append(abk.conway[0])
+		born.append(abk.conway[1])
+		kill.append(abk.conway[2])
+	death = Death(map, n, alive, born, kill, win.economy)
+	return death
+
+
 class DeathCli:
 	global help
 
-	def __init__(self, death=death_extra.test(15, 15, 2), title='',
+	def __init__(self, death=example_game(15, 15, 2), title='',
 			screen=curses.initscr()):
 		self.screen = screen
 		self.death = death
