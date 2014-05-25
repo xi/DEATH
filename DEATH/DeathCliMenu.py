@@ -32,7 +32,7 @@ return with any key
 
 
 class Crs(object):
-	def __init__(self, screen=curses.initscr()):
+	def __init__(self, screen):
 		self.screen = screen
 		self.screen.clear()
 		curses.curs_set(0)
@@ -175,13 +175,14 @@ class Crs(object):
 
 		_map = Map(rows, cols)
 		d = Death(_map, n, alive, born, kill)
-		DeathUI(d, 'default', self.screen)
+		DeathUI(self.screen, d, title='default')
 		return True
 
 
 if __name__ == '__main__':
+	screen = curses.initscr()
 	try:
-		Crs()
+		Crs(screen)
 	except Exception as ex:
 		print(ex)
 	curses.endwin()

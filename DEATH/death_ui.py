@@ -33,22 +33,8 @@ return with any key
 """
 
 
-def example_game(rows=15, cols=15, n=2):
-	map = Map(rows, cols)
-	alive = []
-	born = []
-	kill = []
-	for player in range(n):
-		alive.append(abk.conway[0])
-		born.append(abk.conway[1])
-		kill.append(abk.conway[2])
-	death = Death(map, n, alive, born, kill, win.economy)
-	return death
-
-
 class DeathUI(object):
-	def __init__(self, death=example_game(15, 15, 2), title='',
-			screen=curses.initscr()):
+	def __init__(self, screen, death, title=''):
 		self.screen = screen
 		self.death = death
 		self.title = title
@@ -140,9 +126,24 @@ class DeathUI(object):
 		return True
 
 
-if __name__ == '__main__':
+def main():
+	screen = curses.initscr()
+	map = Map(rows, cols)
+	alive = []
+	born = []
+	kill = []
+	for player in range(n):
+		alive.append(abk.conway[0])
+		born.append(abk.conway[1])
+		kill.append(abk.conway[2])
+	death = Death(map, n, alive, born, kill, win.economy)
+
 	try:
-		DeathUI()
+		DeathUI(screen, death)
 	except Exception as ex:
 		print(ex)
 	curses.endwin()
+
+
+if __name__ == '__main__':
+	main()

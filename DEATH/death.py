@@ -20,7 +20,7 @@ from matrix import Map
 
 
 class Death(object):
-	def __init__(self, _map=Map(), n=1, alive=[[2, 3]], born=[[3]], kill=[[]],
+	def __init__(self, _map, n=1, alive=[[2, 3]], born=[[3]], kill=[[]],
 			win=lambda _map, n: None):
 		# the defaults make death the standart life
 		self.n = n
