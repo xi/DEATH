@@ -3,8 +3,8 @@
 
 from matrix import Map
 from death import Death
-import death_extra_win as win
-import death_extra_abk as abk
+import win
+import abk
 
 "complete games"
 
