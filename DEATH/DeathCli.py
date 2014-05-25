@@ -135,6 +135,7 @@ class DeathCli:
 		elif key == 27:
 			self.screen.clear()
 			return False
+		self.screen.clear()
 		self.draw()
 		return True
 
