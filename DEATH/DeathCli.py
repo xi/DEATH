@@ -47,8 +47,6 @@ def example_game(rows=15, cols=15, n=2):
 
 
 class DeathCli:
-	global help
-
 	def __init__(self, death=example_game(15, 15, 2), title='',
 			screen=curses.initscr()):
 		self.screen = screen
