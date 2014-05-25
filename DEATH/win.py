@@ -9,7 +9,7 @@ win-functions
 
 
 def death_match(_map, n):
-	# destroy every foe unit
+	"""destroy every foe unit"""
 	winner = None
 	for player in range(n):
 		if _map.count(player) > 0:
@@ -21,7 +21,7 @@ def death_match(_map, n):
 
 
 def capturetheflag(_map, n):
-	# capture the four corners
+	"""capture the four corners"""
 	flag1 = _map.getitem(0, 0)
 	flag2 = _map.getitem(0, _map.cols - 1)
 	flag3 = _map.getitem(_map.rows - 1, _map.cols - 1)
@@ -33,6 +33,7 @@ def capturetheflag(_map, n):
 
 
 def economy(_map, n):
+	"""be first to capture a given fraction of the map"""
 	k = int(_map.rows * _map.cols / n * 0.2)  # TODO?
 	for player in range(n):
 		if _map.count(player) >= k:
