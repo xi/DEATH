@@ -22,7 +22,7 @@ from matrix import Map
 class Death:
 	def __init__(self, _map=Map(), n=1, alive=[[2, 3]], born=[[3]], kill=[[]],
 			win=lambda _map, n: None):
-	# the defaults make death the standart life
+		# the defaults make death the standart life
 		self.n = n
 		self.alive = alive
 		self.born = born
@@ -32,6 +32,7 @@ class Death:
 		self._win = win
 
 	def step_one(self, id):
+		# main logic of the game
 		def f(x):
 			if x[0] == 0:
 				if x[1] in self.born[id]:
@@ -56,9 +57,7 @@ class Death:
 			self.step_one(id)
 
 	def next(self):
-		self.id += 1
-		if self.id == self.n:
-			self.id = 0
+		self.id = (self.id + 1) % self.n
 
 	def count(self):
 		c = []
