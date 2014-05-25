@@ -66,37 +66,23 @@ class Map(Matrix):
 	def clear(self, i, j):
 		self.setitem(i, j, -1)
 
-	def neighbors(self, players, reverse=False):
-		try:
-			0 in players
-		except:
-			players = [players]
-		if reverse:
-			players.append(self.value)
+	def neighbors(self, players):
 		result = Map(self.rows, self.cols, self.diagonal)
 		for i in range(self.rows):
 			for j in range(self.cols):
 				a = 0
 				for cood in [(i + 1, j), (i, j + 1), (i - 1, j), (i, j - 1)]:
 					try:
-						if reverse:
-							if self.getitem(cood[0], cood[1]) not in players:
-								a += 1
-						else:
-							if self.getitem(cood[0], cood[1]) in players:
-								a += 1
+						if self.getitem(cood[0], cood[1]) in players:
+							a += 1
 					except:
 						pass
 				if self.diagonal:
 					for cood in [(i + 1, j + 1), (i + 1, j - 1), (i - 1, j + 1),
 							(i - 1, j - 1)]:
 						try:
-							if reverse:
-								if self.getitem(cood[0], cood[1]) not in players:
-									a += 1
-							else:
-								if self.getitem(cood[0], cood[1]) in players:
-									a += 1
+							if self.getitem(cood[0], cood[1]) in players:
+								a += 1
 						except:
 							pass
 				result.setitem(i, j, a)
