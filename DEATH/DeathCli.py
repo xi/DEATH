@@ -65,7 +65,7 @@ class DeathCli:
 		for y in range(h):
 			self.screen.addstr(y0 + y, x0 - 1, '|', curses.color_pair(2))
 			self.screen.addstr(y0 + y, x0 + w, '|', curses.color_pair(2))
-		self.screen.addstr(y0 + h, x0 + w, str(self.death.id + 1),
+		self.screen.addstr(y0 + h, x0 + w, str(self.death.player + 1),
 			curses.color_pair(2))
 		# count
 		self.screen.addstr(y0 - 1, x0 + 2,
@@ -102,14 +102,14 @@ class DeathCli:
 			if self.col > 0:
 				self.col -= 1
 		elif key == ord(' '):
-			self.death.map.setitem(self.row, self.col, self.death.id)
+			self.death.map.setitem(self.row, self.col, self.death.player)
 			self.death.next()
 		elif key == curses.KEY_BACKSPACE:
 			self.death.map.clear(self.row, self.col)
 		elif key == ord('\n'):
 			self.death.step()
 		elif key == ord('\t'):
-			self.death.step_one(self.death.id)
+			self.death.step_one(self.death.player)
 			self.death.next()
 		elif key == ord('h'):
 			self.screen.clear()

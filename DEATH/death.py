@@ -28,41 +28,41 @@ class Death:
 		self.born = born
 		self.kill = kill
 		self.map = _map
-		self.id = 0
+		self.player = 0
 		self._win = win
 
-	def step_one(self, id):
+	def step_one(self, player):
 		# main logic of the game
 		def f(x):
 			if x[0] < 0:
-				if x[1] in self.born[id]:
-					return id
+				if x[1] in self.born[player]:
+					return player
 				else:
 					return x[0]
-			elif x[0] == id:
-				if x[1] in self.alive[id]:
+			elif x[0] == player:
+				if x[1] in self.alive[player]:
 					return x[0]
 				else:
 					return -1
 			else:
-				if x[1] in self.kill[id]:
+				if x[1] in self.kill[player]:
 					return -1
 				else:
 					return x[0]
-		self.map.join([self.map, self.map.neighbors([id])])
+		self.map.join([self.map, self.map.neighbors([player])])
 		self.map.apply_f(f)
 
 	def step(self):
-		for id in range(self.n):
-			self.step_one(id)
+		for player in range(self.n):
+			self.step_one(player)
 
 	def next(self):
-		self.id = (self.id + 1) % self.n
+		self.player = (self.player + 1) % self.n
 
 	def count(self):
 		c = []
-		for id in range(self.n):
-			c.append(self.map.count(id))
+		for player in range(self.n):
+			c.append(self.map.count(player))
 		return c
 
 	def win(self):

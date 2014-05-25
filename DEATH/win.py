@@ -11,12 +11,12 @@ win-functions
 def death_match(_map, n):
 	# destroy every foe unit
 	winner = None
-	for id in range(n):
-		if _map.count(id) > 0:
+	for player in range(n):
+		if _map.count(player) > 0:
 			if winner:
 				return None
 			else:
-				winner = id
+				winner = player
 	return winner
 
 
@@ -34,7 +34,7 @@ def capturetheflag(_map, n):
 
 def economy(_map, n):
 	k = int(_map.rows * _map.cols / n * 0.2)  # TODO?
-	for id in range(n):
-		if _map.count(id) >= k:
-			return id
+	for player in range(n):
+		if _map.count(player) >= k:
+			return player
 	return None
