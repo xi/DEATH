@@ -34,22 +34,22 @@ class Death:
 	def step_one(self, id):
 		# main logic of the game
 		def f(x):
-			if x[0] == 0:
+			if x[0] < 0:
 				if x[1] in self.born[id]:
-					return id + 1
+					return id
 				else:
 					return x[0]
-			elif x[0] == id + 1:
+			elif x[0] == id:
 				if x[1] in self.alive[id]:
 					return x[0]
 				else:
-					return 0
+					return -1
 			else:
 				if x[1] in self.kill[id]:
-					return 0
+					return -1
 				else:
 					return x[0]
-		self.map.join([self.map, self.map.neighbors([id + 1])])
+		self.map.join([self.map, self.map.neighbors([id])])
 		self.map.apply_f(f)
 
 	def step(self):
@@ -62,7 +62,7 @@ class Death:
 	def count(self):
 		c = []
 		for id in range(self.n):
-			c.append(self.map.count(id + 1))
+			c.append(self.map.count(id))
 		return c
 
 	def win(self):

@@ -78,10 +78,10 @@ class DeathCli:
 		for i in range(self.death.map.rows):
 			for j in range(self.death.map.cols):
 				field = self.death.map.getitem(i, j)
-				if field == 0:
+				if field < 0:
 					s = ' '
 				else:
-					s = str(field)
+					s = str(field + 1)
 				if i == self.row and j == self.col:
 					self.screen.addstr(y0 + i, x0 + 2*j, s, curses.color_pair(1))
 				else:
@@ -102,10 +102,10 @@ class DeathCli:
 			if self.col > 0:
 				self.col -= 1
 		elif key == ord(' '):
-			self.death.map.setitem(self.row, self.col, self.death.id + 1)
+			self.death.map.setitem(self.row, self.col, self.death.id)
 			self.death.next()
 		elif key == curses.KEY_BACKSPACE:
-			self.death.map.setitem(self.row, self.col, 0)
+			self.death.map.clear(self.row, self.col)
 		elif key == ord('\n'):
 			self.death.step()
 		elif key == ord('\t'):

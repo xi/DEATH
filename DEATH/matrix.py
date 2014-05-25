@@ -3,7 +3,7 @@
 
 
 class Matrix:
-	def __init__(self, rows, cols, value=0):
+	def __init__(self, rows, cols, value=-1):
 		self.rows = rows
 		self.cols = cols
 		self.value = value
@@ -59,9 +59,12 @@ class Matrix:
 
 
 class Map(Matrix):
-	def __init__(self, rows=15, cols=15, diagonal=True, value=0):
+	def __init__(self, rows=15, cols=15, diagonal=True, value=-1):
 		Matrix.__init__(self, rows, cols, value)
 		self.diagonal = diagonal
+
+	def clear(self, i, j):
+		self.setitem(i, j, -1)
 
 	def neighbors(self, id, reverse=False):
 		try:
