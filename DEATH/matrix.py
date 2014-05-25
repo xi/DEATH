@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-class Matrix:
+class Matrix(object):
 	def __init__(self, rows, cols, value=-1):
 		self.rows = rows
 		self.cols = cols

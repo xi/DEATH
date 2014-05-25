@@ -46,7 +46,7 @@ def example_game(rows=15, cols=15, n=2):
 	return death
 
 
-class DeathCli:
+class DeathCli(object):
 	def __init__(self, death=example_game(15, 15, 2), title='',
 			screen=curses.initscr()):
 		self.screen = screen

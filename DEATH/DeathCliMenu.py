@@ -31,7 +31,7 @@ return with any key
 """
 
 
-class Crs:
+class Crs(object):
 	def __init__(self, screen=curses.initscr()):
 		self.screen = screen
 		self.screen.clear()

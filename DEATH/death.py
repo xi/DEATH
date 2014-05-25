@@ -19,7 +19,7 @@ this happens in turns
 from matrix import Map
 
 
-class Death:
+class Death(object):
 	def __init__(self, _map=Map(), n=1, alive=[[2, 3]], born=[[3]], kill=[[]],
 			win=lambda _map, n: None):
 		# the defaults make death the standart life
