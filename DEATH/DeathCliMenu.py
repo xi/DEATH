@@ -40,6 +40,8 @@ class Crs(object):
 		curses.start_color()
 		curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
 		curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)
+
+	def run(self):
 		while self.main():
 			pass
 
@@ -181,8 +183,9 @@ class Crs(object):
 
 if __name__ == '__main__':
 	screen = curses.initscr()
+	crs = Crs(screen)
 	try:
-		Crs(screen)
+		crs.run()
 	except Exception as ex:
 		print(ex)
 	curses.endwin()

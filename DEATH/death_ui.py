@@ -46,6 +46,8 @@ class DeathUI(object):
 		curses.init_pair(2, curses.COLOR_WHITE, curses.COLOR_BLACK)
 		self.row = 0
 		self.col = 0
+
+	def run(self):
 		self.draw()
 		while self.mainloop():
 			winner = self.death.win()
@@ -138,8 +140,10 @@ def main():
 		kill.append(abk.conway[2])
 	death = Death(map, n, alive, born, kill, win.economy)
 
+	ui = DeathUI(screen, death)
+
 	try:
-		DeathUI(screen, death)
+		ui.run()
 	except Exception as ex:
 		print(ex)
 	curses.endwin()
