@@ -15,25 +15,14 @@ What I added is mulitiplayer support and a third number:
 
 the players take turns.
 
-# controls
-
-arrow-keys - move cursor
-space      - toggle field value
-               after that it is the next players' turn
-backspace  - clear field value
-return     - perform a full step (one for every player)
-tab        - perform a single step (only for the active player)
-               after that it is the next players' turn
-h          - display a help screen
-escape     - quit
-
 # how to start the game?
 
-run DeathCliMenu.py from a terminal
+    python -m DEATH
 
-# dependencies
+# controls
 
-python (tested with 2.6)
-optparse and curses should be installed with python
-
-Latest code can be found on <https://github.com/xi/DEATH>.
+-   arrow-keys: move cursor
+-   space: toggle field value; after that it is the next player's turn
+-   return: perform a single step (only for the active player);
+    after that it is the next player's turn
+-   "q": quit
