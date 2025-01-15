@@ -26,3 +26,7 @@ the players take turns.
 -   return: perform a single step (only for the active player);
     after that it is the next player's turn
 -   "q": quit
+
+# legacy
+
+For a later take on similar ideas, see my project [game of death](https://github.com/xi/game-of-death).
